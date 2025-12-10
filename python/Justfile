@@ -1,0 +1,8 @@
+build:
+    docker-compose build
+
+run: build
+    docker-compose run -it --rm app 2025-12-03
+
+run-local:
+    uv run main.py 2025-12-03
