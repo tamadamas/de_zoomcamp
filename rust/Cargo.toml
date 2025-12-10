@@ -1,0 +1,11 @@
+[package]
+name = "de_zoomcamp"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "de_zoomcamp"
+path = "src/main.rs"
+
+[dependencies]
+polars = { version = "0.52.0", features = ["lazy", "timezones"] }
