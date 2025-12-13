@@ -1,1 +1,5 @@
 export DATABASE_URL="postgresql://user:user@localhost:5432/ny_taxi"
+export PGPASSWORD="user"
+export PGHOST=localhost
+export PGUSER=user
+export PGDATABASE=ny_taxi
