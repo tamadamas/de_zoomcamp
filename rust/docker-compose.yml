@@ -1,3 +1,9 @@
+include:
+  - ../common/docker-compose.yml
+
 services:
   app:
     build: .
+    extends:
+      file: ../common/app-compose.yml
+      service: app

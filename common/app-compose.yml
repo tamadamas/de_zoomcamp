@@ -1,0 +1,8 @@
+services:
+  app:
+    environment:
+      DATABASE_URL: "postgresql://user:user@db:5432/ny_taxi"
+    volumes:
+      - ../data:/data
+    depends_on:
+      - db

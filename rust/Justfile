@@ -2,7 +2,10 @@ build:
     docker-compose build
 
 run: build
-    docker-compose run -it --rm app 2025-12-03
+    docker-compose run -it --rm app
 
 run-local:
-    cargo run --release 2025-12-03
+    cargo run --release
+
+ingest:
+    cargo run --release ingest
