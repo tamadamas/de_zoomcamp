@@ -1,7 +1,5 @@
 import sys
 
-import pandas as pd
-
 
 def main():
     print(sys.argv)

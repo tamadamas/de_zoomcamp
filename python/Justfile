@@ -1,8 +1,20 @@
 build:
     docker-compose build
 
-run: build
-    docker-compose run -it --rm app 2025-12-03
+run: build deps
+    docker-compose run -it --rm app
 
-run-local:
+run-local: deps
     uv run main.py 2025-12-03
+
+ingest:
+    uv run ingest_data.py
+
+deps:
+    docker-compose up -d db pgadmin
+
+stop:
+    docker-compose stop
+
+notebook:
+    uv run --with jupyter jupyter lab --browser=none

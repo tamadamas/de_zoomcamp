@@ -1,0 +1,1 @@
+export DATABASE_URL="postgresql://user:user@localhost:5432/ny_taxi"
