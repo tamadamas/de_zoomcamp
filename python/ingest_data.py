@@ -45,10 +45,20 @@ def main() -> None:
     if not data_file:
         raise ValueError("DATA_FILE environment variable is not set")
 
+    zones_data_file = getenv("ZONES_DATA_FILE")
+    if not zones_data_file:
+        raise ValueError("ZONES_DATA_FILE environment variable is not set")
+
     ingest_data_polars(
         database_url=database_url,
         table_name="yellow_tripdata",
         data_file=data_file,
+    )
+
+    ingest_data_duckdb(
+        database_url=database_url,
+        table_name="zones",
+        data_file=zones_data_file,
     )
 
     # Use for benchmarking
@@ -121,7 +131,7 @@ def ingest_data_pandas(database_url: str, table_name: str, data_file: str) -> No
 
 @trace_func
 def ingest_data_duckdb(database_url: str, table_name: str, data_file: str) -> None:
-    print(f"Scanning parquet {data_file}")
+    print(f"Scanning {data_file}")
 
     con = duckdb.connect()
 
@@ -129,9 +139,7 @@ def ingest_data_duckdb(database_url: str, table_name: str, data_file: str) -> No
     con.execute(f"DROP TABLE IF EXISTS pg.{table_name}")
 
     print(f"DuckDB: IMPORTING {data_file} to pg.{table_name}...")
-    con.execute(
-        f"CREATE TABLE pg.{table_name} AS SELECT * FROM read_parquet('{data_file}')"
-    )
+    con.execute(f"CREATE TABLE pg.{table_name} AS SELECT * FROM '{data_file}'")
 
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@ services:
     environment:
       DATABASE_URL: "postgresql://user:user@db:5432/ny_taxi"
       DATA_FILE: "../data/yellow_tripdata_2025-01.parquet"
+      ZONES_DATA_FILE: "../data/zones.csv"
     volumes:
       - ../data:/data
     depends_on:
