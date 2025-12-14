@@ -45,11 +45,11 @@ def main() -> None:
     if not data_file:
         raise ValueError("DATA_FILE environment variable is not set")
 
-    # ingest_data_polars(
-    #     database_url=database_url,
-    #     table_name="yellow_tripdata",
-    #     data_file=data_file,
-    # )
+    ingest_data_polars(
+        database_url=database_url,
+        table_name="yellow_tripdata",
+        data_file=data_file,
+    )
 
     # Use for benchmarking
     # ingest_data_duckdb(
@@ -124,7 +124,6 @@ def ingest_data_duckdb(database_url: str, table_name: str, data_file: str) -> No
     print(f"Scanning parquet {data_file}")
 
     con = duckdb.connect()
-    con.execute("INSTALL postgres; LOAD postgres;")
 
     con.execute(f"ATTACH '{database_url}' AS pg (TYPE POSTGRES, SCHEMA 'public')")
     con.execute(f"DROP TABLE IF EXISTS pg.{table_name}")

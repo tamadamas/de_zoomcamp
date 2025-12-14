@@ -1,11 +1,11 @@
-build:
-    docker-compose build
-
-run: build
-    docker-compose run -it --rm app
-
-run-local:
+run: deps
     cargo run --release
 
-ingest:
+ingest: deps
     cargo run --release ingest
+
+deps:
+    docker-compose up -d db pgadmin
+
+stop:
+    docker-compose stop

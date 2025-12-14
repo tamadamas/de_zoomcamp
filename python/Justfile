@@ -1,14 +1,14 @@
-build:
-    docker-compose build
-
 run: build deps
     docker-compose run -it --rm app
 
 run-local: deps
     uv run main.py 2025-12-03
 
-ingest:
+ingest: deps
     uv run ingest_data.py
+
+build:
+    docker-compose build
 
 deps:
     docker-compose up -d db pgadmin

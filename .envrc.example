@@ -1,5 +1,6 @@
 export DATABASE_URL="postgresql://user:user@localhost:5432/ny_taxi"
-export PGPASSWORD="user"
-export PGHOST=localhost
-export PGUSER=user
-export PGDATABASE=ny_taxi
+export DATA_FILE="../data/yellow_tripdata_2025-01.parquet"
+
+export DUCKDB_LIB_DIR=$PWD/libduckdb
+export DUCKDB_INCLUDE_DIR=$DUCKDB_LIB_DIR
+export LD_LIBRARY_PATH=$DUCKDB_LIB_DIR

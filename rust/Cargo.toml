@@ -8,5 +8,7 @@ name = "de_zoomcamp"
 path = "src/main.rs"
 
 [dependencies]
+anyhow = "1.0.100"
 clap = { version = "4.5.53", features = ["derive"] }
-polars = { version = "0.52.0", features = ["lazy", "timezones"] }
+duckdb = { version = "1.4.3" }
+# polars = { version = "0.52.0", features = ["decompress", "dtype-datetime", "lazy", "parquet", "timezones"] }
