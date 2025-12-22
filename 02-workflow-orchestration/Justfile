@@ -1,0 +1,17 @@
+run: build deps
+    docker-compose run -it --rm app
+
+run-local:
+    uv run main.py
+
+build:
+    docker-compose build
+
+deps:
+    docker-compose up -d db pgadmin kestra
+
+stop:
+    docker-compose stop
+
+notebook:
+    uv run --with jupyter jupyter lab --browser=none
