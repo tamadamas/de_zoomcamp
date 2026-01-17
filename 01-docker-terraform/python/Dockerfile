@@ -1,4 +1,4 @@
-FROM python:3.14.2-slim-trixie as build
+FROM python:3.13-slim-trixie as build
 
 COPY --from=ghcr.io/astral-sh/uv:0.9.17 /uv /uvx /bin/
 
@@ -15,7 +15,7 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev
 
-FROM python:3.14.2-slim-trixie as runtime
+FROM python:3.13-slim-trixie as runtime
 
 ENV PATH="/app/.venv/bin:$PATH"
 
@@ -27,4 +27,5 @@ COPY --from=build --chown=appuser:appgroup /app .
 
 USER appuser
 
-ENTRYPOINT ["python", "ingest_data.py"]
+# ENTRYPOINT ["python", "ingest_data.py"]
+ENTRYPOINT ["bash"]

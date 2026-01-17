@@ -49,15 +49,19 @@ def main() -> None:
     if not zones_data_file:
         raise ValueError("ZONES_DATA_FILE environment variable is not set")
 
+    table_name = getenv("TABLE_NAME")
+    if not table_name:
+        raise ValueError("TABLE_NAME environment variable is not set")
+
     ingest_data_polars(
         database_url=database_url,
-        table_name="yellow_tripdata",
+        table_name=table_name,
         data_file=data_file,
     )
 
     ingest_data_duckdb(
         database_url=database_url,
-        table_name="zones",
+        table_name=table_name + "zones",
         data_file=zones_data_file,
     )
 

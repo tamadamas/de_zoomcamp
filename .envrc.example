@@ -1,5 +1,7 @@
 export DATABASE_URL="postgresql://user:user@localhost:5432/ny_taxi"
-export DATA_FILE="../data/yellow_tripdata_2025-01.parquet"
+export DATA_FILE="../../data/green_tripdata_2025-11.parquet"
+export ZONES_DATA_FILE="../../data/taxi_zone_lookup.csv"
+export TABLE_NAME="green_taxi"
 
 export DUCKDB_LIB_DIR=$PWD/libduckdb
 export DUCKDB_INCLUDE_DIR=$DUCKDB_LIB_DIR
